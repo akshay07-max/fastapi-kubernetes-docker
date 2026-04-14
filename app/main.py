@@ -53,7 +53,7 @@ manager = ConnectionManager()
 # websocket endpoint
 @app.websocket("/ws")
 async def websocket_endpoint(websocket:WebSocket):
-    await manager.connect()
+    await manager.connect(websocket)
 
     try:
         #send initial summy data
