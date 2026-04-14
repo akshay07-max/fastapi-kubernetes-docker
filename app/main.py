@@ -11,7 +11,7 @@ def root():
 
 
 @app.get("/data")
-def get_dummy_data(data):
+def get_dummy_data():
     return dummy_data
 
 # websocket 
