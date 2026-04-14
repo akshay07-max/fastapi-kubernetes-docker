@@ -1,4 +1,4 @@
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException
 from dummy_data import dummy_data
 
 app = FastAPI()
@@ -13,6 +13,23 @@ def root():
 @app.get("/data")
 def get_dummy_data():
     return dummy_data
+
+@app.get("/data/{id}")
+def get_user(id: int):
+    try:
+        for data in dummy_data:
+            if data["id"] == id:
+                return data
+            
+        raise HTTPException(status_code=404, detail="User Not Found")
+            
+    except HTTPException as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+
+
+                
+
 
 # websocket 
 
