@@ -1,5 +1,5 @@
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, HTTPException
-from dummy_data import dummy_data
+from app.dummy_data import dummy_data
 
 app = FastAPI()
 
